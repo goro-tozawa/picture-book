@@ -1,24 +1,46 @@
-# README
+## users テーブル
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+| Column | Type | Options |
+| ---------- | -------- | -------- |
+| name | string | null: false |
+| nickname | string | null: false|
 
-Things you may want to cover:
+- has_many :comments
+- has_many :picture_books, through: :comments
 
-* Ruby version
+## picture_books テーブル
 
-* System dependencies
+| Column | Type | Options |
+| ---------- | -------- | -------- |
+| title      | string | null: false |
+| catch_copy | text | null: false |
+| concept      | text | null: false |
+| image    | ActiveStorage | ------- |
+| genre    |  integer |  null: false |
+| age   |  integer |  null: false |
+| user | references | null: false  |
 
-* Configuration
+- has_many : comments
+- has_many : users, through: :comments
 
-* Database creation
 
-* Database initialization
+## commentsテーブル
 
-* How to run the test suite
+|  Column | Type | Options |
+| ------------ | ------- | ---------- |
+| text      | text | null: false |
+| user | references | null: false |
+| picture_book |  references  | -------- | 
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :users
+- belongs_to :picture_books
 
-* Deployment instructions
+## nice_functionテーブル
 
-* ...
+|  Column | Type | Options |
+| ------------ | ------- | ---------- |
+| user_id | references | null: false |
+| picture_book_id |  references  | null: false | 
+
+- belongs_to :users
+- belongs_to :picture_books
