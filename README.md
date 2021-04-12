@@ -6,9 +6,9 @@
 | nickname | string | null: false|
 
 - has_many :comments
-- has_many :picture_books, through: :comments
+- has_many :pictures, through: :comments
 
-## picture_books テーブル
+## pictures テーブル
 
 | Column | Type | Options |
 | ---------- | -------- | -------- |
@@ -33,7 +33,7 @@
 | picture_book |  references  | -------- | 
 
 - belongs_to :users
-- belongs_to :picture_books
+- belongs_to :pictures
 
 ## nice_functionテーブル
 
@@ -43,4 +43,4 @@
 | picture_book_id |  references  | null: false | 
 
 - belongs_to :users
-- belongs_to :picture_books
+- belongs_to :pictures
